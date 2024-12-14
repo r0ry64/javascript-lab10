@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: red;
+    color: black;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+}
+
+h2 {
+    margin-top: 20px;
+    color: black;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: darkred;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: black;
+}
+
+form {
+    margin: 20px 0;
+    padding: 10px;
+    background: gray;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px black;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    background-color: darkred;
+}
+
+button[type="submit"]:hover {
+    background-color: black;
+}
+
+#output, #post-output, #put-output {
+    margin-top: 20px;
+    padding: 10px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px black;
+}
+
+pre {
+    background: white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.error {
+    color: orangered;
+    font-weight: bold;
+}
