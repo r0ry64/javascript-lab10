@@ -41,3 +41,31 @@ xhrBtn.addEventListener('click', () => {
 
     xhr.send();
 });
+
+postForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById('post-title').value;
+    const body = document.getElementById('post-body').value;
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title, body }),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            postOutput.innerHTML = `<p>Post created successfully:</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            postForm.reset();
+        })
+        .catch(error => {
+            postOutput.innerHTML = `<p class='error'>Failed to send data: ${error.message}</p>`;
+        });
+});
