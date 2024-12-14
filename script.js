@@ -21,3 +21,23 @@ fetchBtn.addEventListener('click', () => {
             outputDiv.innerHTML = `<p class='error'>Failed to fetch data: ${error.message}</p>`;
         });
 });
+
+xhrBtn.addEventListener('click', () => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts/2');
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            outputDiv.innerHTML = `<h3>${data.title}</h3><p>${data.body}</p>`;
+        } else {
+            outputDiv.innerHTML = `<p class='error'>Failed to fetch data: ${xhr.statusText}</p>`;
+        }
+    };
+
+    xhr.onerror = function () {
+        outputDiv.innerHTML = `<p class='error'>Network error occurred.</p>`;
+    };
+
+    xhr.send();
+});
