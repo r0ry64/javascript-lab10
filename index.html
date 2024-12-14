@@ -3,13 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Lab 8</title>
-    <script defer src="script.js"></script>
+    <title>Lab 10: API Calls</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>JavaScript Lab 10: API Calls in JavaScript</h1>
-    <h2>By Edgar Rory Cobb</h2>
-    <p>Please read the javascript console output :)</p>
- 
+    <h1>Javascript Lab 10: API Calls in JavaScript</h1>
+
+    <div class="buttons">
+        <button id="fetch-btn">Fetch Data with fetch()</button>
+        <button id="xhr-btn">Fetch Data with XHR</button>
+    </div>
+
+    <section id="data-display">
+        <h2>Fetched Data</h2>
+        <div id="output"></div>
+    </section>
+
+    <section id="post-data">
+        <h2>Send Data (POST)</h2>
+        <form id="post-form">
+            <label for="post-title">Title:</label>
+            <input type="text" id="post-title" name="title" required>
+
+            <label for="post-body">Body:</label>
+            <textarea id="post-body" name="body" required></textarea>
+
+            <button type="submit">Send POST Request</button>
+        </form>
+        <div id="post-output"></div>
+    </section>
+
+    <section id="update-data">
+        <h2>Update Data (PUT)</h2>
+        <form id="put-form">
+            <label for="put-id">Post ID:</label>
+            <input type="number" id="put-id" name="id" required>
+
+            <label for="put-title">Title:</label>
+            <input type="text" id="put-title" name="title" required>
+
+            <label for="put-body">Body:</label>
+            <textarea id="put-body" name="body" required></textarea>
+
+            <button type="submit">Send PUT Request</button>
+        </form>
+        <div id="put-output"></div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
