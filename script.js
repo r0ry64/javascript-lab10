@@ -18,7 +18,7 @@ fetchBtn.addEventListener('click', () => {
             outputDiv.innerHTML = `<h3>${data.title}</h3><p>${data.body}</p>`;
         })
         .catch(error => {
-            outputDiv.innerHTML = `<p class='error'>Failed to fetch data: ${error.message}</p>`;
+            outputDiv.innerHTML = `<p class='error'>Failed to fetch data!! ${error.message}</p>`;
         });
 });
 
@@ -31,12 +31,12 @@ xhrBtn.addEventListener('click', () => {
             const data = JSON.parse(xhr.responseText);
             outputDiv.innerHTML = `<h3>${data.title}</h3><p>${data.body}</p>`;
         } else {
-            outputDiv.innerHTML = `<p class='error'>Failed to fetch data: ${xhr.statusText}</p>`;
+            outputDiv.innerHTML = `<p class='error'>Failed to fetch data!! ${xhr.statusText}</p>`;
         }
     };
 
     xhr.onerror = function () {
-        outputDiv.innerHTML = `<p class='error'>Network error occurred.</p>`;
+        outputDiv.innerHTML = `<p class='error'>Network error occurred :(</p>`;
     };
 
     xhr.send();
@@ -66,6 +66,34 @@ postForm.addEventListener('submit', (e) => {
             postForm.reset();
         })
         .catch(error => {
-            postOutput.innerHTML = `<p class='error'>Failed to send data: ${error.message}</p>`;
+            postOutput.innerHTML = `<p class='error'>Failed to send data!! ${error.message}</p>`;
         });
+});
+
+putForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const id = document.getElementById('put-id').value;
+    const title = document.getElementById('put-title').value;
+    const body = document.getElementById('put-body').value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', `https://jsonplaceholder.typicode.com/posts/${id}`);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            putOutput.innerHTML = `<p>Post updated successfully:</p><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            putForm.reset();
+        } else {
+            putOutput.innerHTML = `<p class='error'>Failed to update data!! ${xhr.statusText}</p>`;
+        }
+    };
+
+    xhr.onerror = function () {
+        putOutput.innerHTML = `<p class='error'>Network error occurred :( </p>`;
+    };
+
+    xhr.send(JSON.stringify({ title, body }));
 });
